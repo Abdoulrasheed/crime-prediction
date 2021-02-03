@@ -1,37 +1,41 @@
+import numpy as np
 import pandas as pd
-from pandas import DataFrame
 from models import Model
 from utils import preprocess_address
 
 def get_social_data():
-    return pd.read_csv('datasets/social_sample.csv')
+    try:
+        return pd.read_csv('datasets/social_sample.csv', keep_default_na=False, na_values=[""])
+    except:
+        return None
 
 def get_crime_data():
-    names = ['surname', 'first_name', 'phone_number','Age', 'crime', 'date_of_crime', 'location']
-    return pd.read_csv('datasets/crime_main.csv', names=names)
+    names = ['fullname', 'phone', 'crime', 'address', 'posts']
+    try:
+        return pd.read_csv('datasets/crime_main.csv', names=names, keep_default_na=False, na_values=[""])
+    except:
+        return None
 
 def get_telecom_data():
-    return pd.read_csv('datasets/telecom_main.csv')
+    try:
+        return pd.read_csv('datasets/telecom_main.csv', keep_default_na=False, na_values=[""])
+    except:
+        return None
 
 def main():
-    sdata = get_social_data()
     cdata = get_crime_data()
-    #tdata = get_telecom_data()
+    sdata = get_social_data()
+    tdata = get_telecom_data()
     
-    datasets = {"social": sdata, "crime": cdata, "telecom": tdata}
+    combined_dataset = pd.concat([sdata, cdata, tdata], axis=1, join="inner")
+    
     model = Model()
-    model.crime_data = cdata
-    model.social_data = sdata
-    model.telecom_data = tdata
-    
-    model.train()
+    model.train(combined_dataset)
     output = model.predict()
     
+    print(f"predicted results: {output}")
+    
     #draw matplotlib
-    
-    #processed_data = preprocess_address(cdata.values)
-    
-    #print(processed_data)
 
 if __name__ == "__main__":
     main()
