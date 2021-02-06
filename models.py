@@ -112,4 +112,3 @@ class Model:
             sentiments.append({"post": post, "result": result})
         
         print(sentiments)
-            

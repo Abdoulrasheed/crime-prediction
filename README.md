@@ -1,25 +1,24 @@
 #Crime Prediction
 
-### TO DOWNLOAD Stop Words
+### Download stop words
 
 ```py
 
 import nltk
 
+# Download stop words
 nltk.download('stopwords')
 
+# Download sample tweets, used for training our model
+nltk.download('stopwords')
+
+# Download punkt, a pre-trained model that helps you tokenize words and sentences
+# For instance, this model knows that a name may contain a period (like “A. Ibrahim) and the presence of this period in a sentence does not necessarily end it.
+nltk.download('punkt')
+
+# Download wordnet, wordnet is a lexical database for the English language that helps the script determine the base word.
+nltk.download('wordnet')
+
+# Download averaged_perceptron_tagger, it is a resource to determine the context of a word in a sentence.
+nltk.download('averaged_perceptron_tagger')
 ```
-
-Model Architecture:
-
-Embedding Layer: in simple terms, it creates word vectors of each word in the word_index and group words that are related or have similar meaning by analyzing other words around them.
-
-LSTM Layer: to make a decision to keep or throw away data by considering the current input, previous output, and previous memory. There are some important components in LSTM.
-
-Forget Gate, decides information is to be kept or thrown away
-Input Gate, updates cell state by passing previous output and current input into sigmoid activation function
-Cell State, calculate new cell state, it is multiplied by forget vector (drop value if multiplied by a near 0), add it with the output from input gate to update the cell state value.
-Ouput Gate, decides the next hidden state and used for predictions
-Dense Layer: compute the input with the weight matrix and bias (optional), and using an activation function. I use Sigmoid activation function for this work because the output is only 0 or 1.
-
-The optimizer is Adam and the loss function is Binary Crossentropy because again the output is only 0 and 1, which is a binary number.
