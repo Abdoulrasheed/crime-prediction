@@ -1,6 +1,6 @@
 #Crime Prediction
 
-### Download stop words
+### Run the following commands in a python shell
 
 ```py
 

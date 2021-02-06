@@ -23,6 +23,7 @@ def get_telecom_data():
         return None
 
 def main():
+    print("Reading and combining datasets...\n")
     cdata = get_crime_data()
     sdata = get_social_data()
     tdata = get_telecom_data()
@@ -31,11 +32,9 @@ def main():
     
     model = Model()
     model.train(combined_dataset)
-    #output = model.predict()
-    
-    #print(f"predicted results: {output}")
-    
-    # draw matplotlib
+    predicted_result = model.predict()
+    print(f"Prediction Results: {predicted_result}")
+    model.plot(predicted_result)
 
 if __name__ == "__main__":
     main()
