@@ -31,11 +31,11 @@ def main():
     
     model = Model()
     model.train(combined_dataset)
-    output = model.predict()
+    #output = model.predict()
     
-    print(f"predicted results: {output}")
+    #print(f"predicted results: {output}")
     
-    #draw matplotlib
+    # draw matplotlib
 
 if __name__ == "__main__":
     main()
