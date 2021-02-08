@@ -1,5 +1,4 @@
 import numpy as np
-import tensorflow as tf
 import re, string, random
 from nltk.tag import pos_tag
 from nltk.corpus import stopwords
