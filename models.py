@@ -171,9 +171,6 @@ class Model:
             
         # Make the multi-bar plot
         fig = pl.Figure(data=bar_plots, layout=layout)
-
-        # Tell Plotly to render it
-        fig.show()
         
         print("Done.")
     
